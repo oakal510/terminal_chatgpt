@@ -35,7 +35,11 @@ client = OpenAI(
 
 def chat_me(client):
 
-    content = input("> ")
+    try: 
+        content = input("> ")
+    except KeyboardInterrupt:
+        sys.exit()
+    
     history.append({"role": "user", "content": content})
 
     chat_completion = client.chat.completions.create(
